@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA y la Verdad: Navegando las Alucinaciones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Warm Neutrals (Stone, Teal) -->
+    <!-- Application Structure Plan: Se ha diseñado una estructura narrativa lineal que guía al usuario a través del concepto en tres etapas claras: 1) Definición del Problema, 2) Impacto en el Mundo Real (Estudio de Caso), y 3) La Solución Práctica. Esta estructura se eligió por su eficacia pedagógica, ya que construye el conocimiento progresivamente, pasando de lo abstracto a lo concreto y culminando en una guía de acción. Facilita la comprensión y retención al presentar la información de manera lógica y secuencial en una sola vista. -->
+    <!-- Visualization & Content Choices: El contenido se presenta mediante bloques de texto e iconos para maximizar la claridad. Información: 'El Problema' -> Objetivo: Informar -> Método: Bloque de texto con icono (HTML/CSS) -> Interacción: Lectura -> Justificación: Explicación clara y directa. Información: 'Caso Chanta-GPT' -> Objetivo: Impactar/Ejemplificar -> Método: Tarjeta de cita destacada (HTML/CSS) -> Justificación: Aporta un ejemplo concreto y memorable. Información: 'La Solución' -> Objetivo: Organizar/Instruir -> Método: Tarjetas interactivas numeradas (HTML/CSS/JS) -> Interacción: Clic para expandir y ver detalles -> Justificación: Fomenta el aprendizaje activo y desglosa la solución en pasos manejables. No se usaron gráficos ya que el informe no contiene datos cuantitativos. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        .step-card .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .step-card.open .details {
+            max-height: 500px;
+        }
+        .step-card .icon-arrow {
+            transition: transform 0.3s ease-in-out;
+        }
+        .step-card.open .icon-arrow {
+            transform: rotate(180deg);
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #0d9488;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-teal-800 mb-2">IA y la Verdad</h1>
+            <p class="text-xl md:text-2xl text-stone-600">Una guía para navegar las "alucinaciones" de la Inteligencia Artificial.</p>
+        </header>
+
+        <main class="flex flex-col gap-12 md:gap-20">
+
+            <!-- Section 1: The Problem -->
+            <section id="problema">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-stone-800">El Problema: La IA "inventa" información</h2>
+                    <p class="mt-4 text-lg text-stone-600 max-w-3xl mx-auto">
+                        Esta sección introduce el concepto de las "alucinaciones" en la IA. Exploraremos qué son, por qué ocurren y cómo un caso real en el ámbito legal demuestra los peligros de confiar ciegamente en la información que generan estas herramientas.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
+                    <div class="flex justify-center items-center text-8xl text-teal-500">
+                        <span>🤖❓</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-teal-700 mb-3">¿Qué es una "Alucinación" de IA?</h3>
+                        <p class="text-stone-700 mb-4">
+                            Las "alucinaciones" son un fenómeno donde los modelos de lenguaje generativo producen información que parece real y convincente, pero que es "completamente falsa o inventada".
+                        </p>
+                        <p class="text-stone-700">
+                            Esto sucede porque la IA no "entiende" la verdad; simplemente se basa en patrones estadísticos para predecir la siguiente palabra más probable. Es un experto en imitar la forma, no en verificar el fondo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10 bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg">
+                    <h4 class="text-xl font-bold text-amber-900">Caso Real: "Chanta-GPT"</h4>
+                    <blockquote class="mt-2 text-amber-800 italic relative">
+                        <p>"...un abogado en Argentina presentó un escrito de apelación que citaba jurisprudencia inexistente, lo que llevó a la desestimación del recurso. Este caso subraya la necesidad de que los profesionales verifiquen rigurosamente cualquier información generada por la IA antes de usarla en un contexto real."</p>
+                    </blockquote>
+                     <a href="https://www.diariojudicial.com/news-101606-chanta-gpt" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-sm font-semibold text-teal-700 hover:text-teal-900">
+                        Leer más sobre el caso &rarr;
+                    </a>
+                </div>
+            </section>
+
+            <!-- Section 2: The Solution -->
+            <section id="solucion">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-stone-800">La Solución: El Método del Investigador Crítico</h2>
+                     <p class="mt-4 text-lg text-stone-600 max-w-3xl mx-auto">
+                        La IA es una herramienta poderosa, pero la responsabilidad final es nuestra. En esta sección, presentamos un método práctico de tres pasos para usar la IA de forma segura y eficaz, convirtiéndonos en investigadores críticos que validamos la información antes de utilizarla.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-stone-200 cursor-pointer" onclick="toggleStep(this)">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-4xl font-bold text-teal-600">1</span>
+                                <h3 class="text-xl font-bold mt-2">Verifica cada Cita</h3>
+                            </div>
+                            <span class="icon-arrow text-2xl text-teal-600">&#9660;</span>
+                        </div>
+                        <div class="details mt-4 text-stone-600">
+                            <p>No asumas que la información es correcta. Usa los datos proporcionados por la IA (nombre del caso, autor, fecha, etc.) y busca la fuente original. Si no puedes encontrarla con la información exacta, es muy probable que sea una invención.</p>
+                            <p class="mt-2 p-3 bg-teal-50 text-teal-800 rounded-lg text-sm"><strong>Pro-Tip:</strong> Copia y pega la cita completa entre comillas en un motor de búsqueda. Si es real, a menudo encontrarás el documento original.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-stone-200 cursor-pointer" onclick="toggleStep(this)">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-4xl font-bold text-teal-600">2</span>
+                                <h3 class="text-xl font-bold mt-2">Usa Bases de Datos Fiables</h3>
+                            </div>
+                           <span class="icon-arrow text-2xl text-teal-600">&#9660;</span>
+                        </div>
+                        <div class="details mt-4 text-stone-600">
+                            <p>Acude siempre a fuentes primarias. Para jurisprudencia, recurre a sitios web de cortes judiciales o al Centro de Información Judicial (CIJ). Para investigación académica, utiliza bases de datos como Jstor, Redalyc, Scopus o Google Académico.</p>
+                             <p class="mt-2 p-3 bg-teal-50 text-teal-800 rounded-lg text-sm"><strong>Pro-Tip:</strong> La biblioteca de tu universidad o institución a menudo ofrece acceso gratuito a bases de datos académicas de alta calidad.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-stone-200 cursor-pointer" onclick="toggleStep(this)">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-4xl font-bold text-teal-600">3</span>
+                                <h3 class="text-xl font-bold mt-2">Analiza en Contexto</h3>
+                            </div>
+                            <span class="icon-arrow text-2xl text-teal-600">&#9660;</span>
+                        </div>
+                        <div class="details mt-4 text-stone-600">
+                            <p>Una vez que encuentres la fuente original, léela por completo. Asegúrate de que el argumento que pretendes usar se sostiene en el texto. La IA puede citar un caso real, pero aplicar la conclusión de manera incorrecta o sacar un pasaje de contexto.</p>
+                             <p class="mt-2 p-3 bg-teal-50 text-teal-800 rounded-lg text-sm"><strong>Pro-Tip:</strong> Pregúntate: ¿La fuente realmente apoya mi argumento, o la estoy forzando para que encaje? La honestidad intelectual es clave.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- New Section: Gemini Interactive Features -->
+            <section id="gemini-interactivo">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-stone-800">Ejemplos Interactivos con Gemini ✨</h2>
+                    <p class="mt-4 text-lg text-stone-600 max-w-3xl mx-auto">
+                        Estas herramientas demuestran el poder y los desafíos de la IA en la práctica, ayudándote a visualizar y practicar los conceptos clave de la aplicación.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Fake Citation Generator -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200 flex flex-col items-center justify-center text-center">
+                        <h3 class="text-2xl font-bold text-teal-700 mb-4">Generador de Alucinaciones</h3>
+                        <p class="text-stone-700 mb-6">Genera una cita legal ficticia sobre un tema específico para ver cómo una alucinación puede parecer convincente.</p>
+                        
+                        <!-- New input for the topic -->
+                        <textarea id="topic-input" rows="3" class="w-full p-3 rounded-lg border-2 border-stone-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-stone-900 placeholder-stone-500 resize-none transition-all duration-300 ease-in-out" placeholder="Introduce un tema (ej. 'despido por cuestión de género')."></textarea>
+
+                        <button id="generate-btn" class="bg-teal-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-teal-700 transition duration-300 ease-in-out transform hover:scale-105 mt-4">
+                            Generar Alucinación ✨
+                        </button>
+                        <div id="loading-spinner-gen" class="loading-spinner mt-6 hidden"></div>
+                        <div id="hallucination-output" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-left hidden"></div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 md:mt-20 border-t border-stone-200 pt-8">
+            <p class="text-stone-500">Usa la IA como asistente, no como autoridad. El pensamiento crítico es tu mejor herramienta.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function toggleStep(element) {
+            element.classList.toggle('open');
+        }
+
+        // Reemplaza "TU_CLAVE_DE_API_AQUÍ" con tu clave de API de Google Gemini.
+        // Puedes obtenerla en https://aistudio.google.com/app/apikey.
+        const apiKey = "TU_CLAVE_DE_API_AQUÍ";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        async function generateHallucination() {
+            const topic = document.getElementById('topic-input').value.trim();
+            const outputDiv = document.getElementById('hallucination-output');
+            const loadingSpinner = document.getElementById('loading-spinner-gen');
+
+            if (topic === "") {
+                outputDiv.innerHTML = `<p class="text-sm text-red-600">Por favor, introduce un tema para generar la alucinación.</p>`;
+                outputDiv.classList.remove('hidden');
+                return;
+            }
+            
+            outputDiv.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+
+            const promptText = `Inventa una cita de jurisprudencia convincente en español sobre el siguiente tema: "${topic}". La cita debe parecer una fuente legal real, incluyendo un título de caso, un número de expediente y un tribunal ficticio (por ejemplo, 'Cámara Civil y Comercial de la Provincia de Buenos Aires'). La cita debe ser completamente falsa.`;
+
+            const payload = {
+                contents: [{
+                    parts: [{
+                        text: promptText
+                    }]
+                }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (!result.candidates || result.candidates.length === 0 || !result.candidates[0].content || !result.candidates[0].content.parts || result.candidates[0].content.parts.length === 0) {
+                    throw new Error('Respuesta de la API inesperada o vacía.');
+                }
+
+                const text = result.candidates[0].content.parts[0].text;
+                outputDiv.innerHTML = `<h4 class="font-bold text-lg mb-2">Cita Generada:</h4><p class="text-sm italic">${text}</p>`;
+                outputDiv.classList.remove('hidden');
+            } catch (error) {
+                console.error('Error al generar la cita:', error);
+                outputDiv.innerHTML = `<p class="text-sm text-red-600">Error al generar la cita. Por favor, inténtelo de nuevo.</p>`;
+                outputDiv.classList.remove('hidden');
+            } finally {
+                loadingSpinner.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('generate-btn').addEventListener('click', generateHallucination);
+
+    </script>
+</body>
+</html>
